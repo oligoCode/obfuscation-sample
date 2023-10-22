@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<ProjectGuid>{0D37B877-0C25-4D55-AABD-6897F9F8C21D}</ProjectGuid>
+		<OutputType>Library</OutputType>
+		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<RootNamespace>common</RootNamespace>
+		<AssemblyName>common</AssemblyName>
+		<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+		<FileAlignment>512</FileAlignment>
+		<Deterministic>true</Deterministic>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		<Reference Include="System.Core"/>
+		<Reference Include="System.Xml.Linq"/>
+		<Reference Include="System.Data.DataSetExtensions"/>
+		<Reference Include="Microsoft.CSharp"/>
+		<Reference Include="System.Data"/>
+		<Reference Include="System.Net.Http"/>
+		<Reference Include="System.Xml"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="Message.cs"/>
+		<Compile Include="Properties\AssemblyInfo.cs"/>
+	</ItemGroup>
+	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+	<!--<UsingTask TaskName="Babel" AssemblyName="Babel.Build, Version=10.2.1.0, Culture=neutral, PublicKeyToken=138d17b5bd621ab7" />
+	<PropertyGroup>
+		<GenerateMapOutFile>true</GenerateMapOutFile>
+		<XmlRules>
+			<Rules targetAssembly="common">
+				<Rule name="public obfuscation" feature="renaming" exclude="false" applyToMembers="true">
+					<Access>Public</Access>
+					<Pattern>*</Pattern>
+				</Rule>
+			</Rules>
+		</XmlRules>
+	</PropertyGroup>
+	<Target Name="AfterBuild">
+		<Babel InputFile="$(TargetPath)" OutputFile="$(TargetPath)" ObfuscateTypes="true" ObfuscateEvents="true" ObfuscateMethods="true" ObfuscateProperties="true" ObfuscateFields="true" VirtualFunctions="true" FlattenNamespaces="true" StringEncryption="hash" VerboseLevel="10" GenerateLogFile="true" GenerateMapOutFile="$(GenerateMapOutFile)" XmlRules="$(XmlRules)"/>
+	</Target>
+	<Import Project="C:\Program Files\Babel\MSBuild\Babel.Build.targets"/>
+	<PropertyGroup>
+		<BabelInputFile>$(TargetPath)</BabelInputFile>
+		<BabelOutputFile>$(TargetDir)</BabelOutputFile>
+		<CleanAttributes>System.Runtime.CompilerServices.CompilerGeneratedAttribute;System.Diagnostics.DebuggerDisplayAttribute;System.Diagnostics.DebuggerBrowsableAttribute;System.Diagnostics.DebuggerNonUserCodeAttribute;System.Diagnostics.DebuggerHiddenAttribute;System.Diagnostics.DebuggerStepThroughAttribute;false</CleanAttributes>
+		<ConstRemoval>false</ConstRemoval>
+		<ControlFlowObfuscation>token=false;underflow=false;goto=false;if=false;switch=false;case=false;call=false;value=false;true</ControlFlowObfuscation>
+		<CopyAttributes>true</CopyAttributes>
+		<DeadCodeElimination>true</DeadCodeElimination>
+		<DebuggingProtection>false</DebuggingProtection>
+		<DependenciesManifest>true</DependenciesManifest>
+		<DetectIfObfuscated>false</DetectIfObfuscated>
+		<DisgregateRemoval>false</DisgregateRemoval>
+		<DynamicProxy>None</DynamicProxy>
+		<EmitInvalidOpcodes>false</EmitInvalidOpcodes>
+		<EnableObfuscationAgent>true</EnableObfuscationAgent>
+		<EnumRemoval>false</EnumRemoval>
+		<FlattenNamespaces>true</FlattenNamespaces>
+		<GenerateDebug>false</GenerateDebug>
+		<GenerateBabelLogFile>false</GenerateBabelLogFile>
+		<BabelLogFile>$(TargetPath).log</BabelLogFile>
+		<LogFile>$(TargetPath).log</LogFile>
+		<VerboseLevel>10</VerboseLevel>
+		<GenerateBabelMapOutFile>true</GenerateBabelMapOutFile>
+		<ILIterations>3</ILIterations>
+		<InlineExpansion>false</InlineExpansion>
+		<BabelInstrument>false</BabelInstrument>
+		<InstrumentEmptyMethods>true</InstrumentEmptyMethods>
+		<Internalize>false</Internalize>
+		<ModuleInitializer>false</ModuleInitializer>
+		<MsilEncryption>false</MsilEncryption>
+		<ObfuscateEvents>true</ObfuscateEvents>
+		<ObfuscateFields>true</ObfuscateFields>
+		<ObfuscateMethods>true</ObfuscateMethods>
+		<ObfuscateParameters>true</ObfuscateParameters>
+		<ObfuscateProperties>true</ObfuscateProperties>
+		<ObfuscateTypes>true</ObfuscateTypes>
+		<ObfuscateXaml>false</ObfuscateXaml>
+		<OverloadedRenaming>false</OverloadedRenaming>
+		<ResourceEncryption>false</ResourceEncryption>
+		<SealClasses>false</SealClasses>
+		<SearchSatelliteAssemblies>true</SearchSatelliteAssemblies>
+		<ShowLogo>true</ShowLogo>
+		<ShowStatistics>true</ShowStatistics>
+		<StringEncryption>true</StringEncryption>
+		<SuppressIldasm>false</SuppressIldasm>
+		<SuppressReflection>false</SuppressReflection>
+		<TamperingDetection>false</TamperingDetection>
+		<UnicodeNormalization>true</UnicodeNormalization>
+		<ValueEncryption>false</ValueEncryption>
+		<VirtualFunctions>true</VirtualFunctions>
+		<XmlRules>
+			<Rules targetAssembly="common">
+				<Rule name="public obfuscation" feature="renaming" exclude="false" applyToMembers="true">
+					<Access>Public</Access>
+					<Pattern>*</Pattern>
+				</Rule>
+			</Rules>
+		</XmlRules>
+	</PropertyGroup>-->
+</Project>
