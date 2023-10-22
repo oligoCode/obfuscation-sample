@@ -47,7 +47,9 @@
 	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 	<!--<UsingTask TaskName="Babel" AssemblyName="Babel.Build, Version=10.2.1.0, Culture=neutral, PublicKeyToken=138d17b5bd621ab7" />
 	<PropertyGroup>
+		<GenerateBabelLogFile>false</GenerateBabelLogFile>
 		<GenerateMapOutFile>true</GenerateMapOutFile>
+		<UnicodeNormalization>true</UnicodeNormalization>
 		<XmlRules>
 			<Rules targetAssembly="common">
 				<Rule name="public obfuscation" feature="renaming" exclude="false" applyToMembers="true">
@@ -58,9 +60,9 @@
 		</XmlRules>
 	</PropertyGroup>
 	<Target Name="AfterBuild">
-		<Babel InputFile="$(TargetPath)" OutputFile="$(TargetPath)" ObfuscateTypes="true" ObfuscateEvents="true" ObfuscateMethods="true" ObfuscateProperties="true" ObfuscateFields="true" VirtualFunctions="true" FlattenNamespaces="true" StringEncryption="hash" VerboseLevel="10" GenerateLogFile="true" GenerateMapOutFile="$(GenerateMapOutFile)" XmlRules="$(XmlRules)"/>
-	</Target>
-	<Import Project="C:\Program Files\Babel\MSBuild\Babel.Build.targets"/>
+		<Babel InputFile="$(TargetPath)" OutputFile="$(TargetPath)" ObfuscateTypes="true" ObfuscateEvents="true" ObfuscateMethods="true" ObfuscateProperties="true" ObfuscateFields="true" VirtualFunctions="true" FlattenNamespaces="true" StringEncryption="hash" VerboseLevel="10" GenerateLogFile="$(GenerateBabelLogFile)" GenerateMapOutFile="$(GenerateMapOutFile)" XmlRules="$(XmlRules)" UnicodeNormalization="$(UnicodeNormalization)" />
+	</Target>-->
+	<!--<Import Project="C:\Program Files\Babel\MSBuild\Babel.Build.targets"/>
 	<PropertyGroup>
 		<BabelInputFile>$(TargetPath)</BabelInputFile>
 		<BabelOutputFile>$(TargetDir)</BabelOutputFile>

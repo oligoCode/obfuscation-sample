@@ -64,7 +64,9 @@
 		<MapInFile Include="..\common\bin\$(Configuration)\common.dll.map.xml"/>
 	</ItemGroup>
 	<PropertyGroup>
+		<GenerateBabelLogFile>false</GenerateBabelLogFile>
 		<GenerateMapOutFile>true</GenerateMapOutFile>
+		<UnicodeNormalization>true</UnicodeNormalization>
 		<XmlRules>
 			<Rules targetAssembly="messageProvider">
 				<Rule name="public obfuscation" feature="renaming" exclude="false" applyToMembers="true">
@@ -75,9 +77,9 @@
 		</XmlRules>
 	</PropertyGroup>
 	<Target Name="AfterBuild">
-		<Babel InputFile="$(TargetPath)" OutputFile="$(TargetPath)"  MapInFiles="@(MapInFile)" ObfuscateTypes="true" ObfuscateEvents="true" ObfuscateMethods="true" ObfuscateProperties="true" ObfuscateFields="true" VirtualFunctions="true" FlattenNamespaces="true" StringEncryption="hash" VerboseLevel="10" GenerateLogFile="$(GenerateMapOutFile)" GenerateMapOutFile="true"  XmlRules="$(XmlRules)" />
-	</Target>
-	<Import Project="C:\Program Files\Babel\MSBuild\Babel.Build.targets"/>
+		<Babel InputFile="$(TargetPath)" OutputFile="$(TargetPath)"  MapInFiles="@(MapInFile)" ObfuscateTypes="true" ObfuscateEvents="true" ObfuscateMethods="true" ObfuscateProperties="true" ObfuscateFields="true" VirtualFunctions="true" FlattenNamespaces="true" StringEncryption="hash" VerboseLevel="10" GenerateLogFile="$(GenerateBabelLogFile)" GenerateMapOutFile="$(GenerateMapOutFile)"  XmlRules="$(XmlRules)" UnicodeNormalization="$(UnicodeNormalization)" />
+	</Target>-->
+	<!--<Import Project="C:\Program Files\Babel\MSBuild\Babel.Build.targets"/>
 	<ItemGroup>
 		<MapInFile Remove="@(MapInFile)"/>
 		<MapInFile Include="C:\Users\yadian\Projects\pentesting\timeProvider\bin\Debug\timeProvider.dll.map.xml"/>
